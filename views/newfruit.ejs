@@ -1,0 +1,32 @@
+<%- include("include/header") -%>
+
+<body class="container py-5">
+    <% if(fruit){ %>
+        <h1 class="text-center mb-3">Edit <%= fruit.name %></h1>
+    <% } else{ %>
+        <h1 class="text-center mb-3">Add New Fruit</h1>
+    <% } %>
+    <% let url = ""; %>
+    <% if(fruit){ %>
+        <% url = "/" + fruit._id %>
+    <% } %>
+    <form action="/newfruit<%= url %>"  method="post">
+        <div class="mb-3">
+            <label for="fruitName" cla ss="form-label">Fruit Name</label>
+            <input type="text" class="form-control" name="fruitName" id="fruitName" value="<%= fruit.name || "" %>">
+        </div>
+        <div class="mb-3">
+            <label for="fruitValue" class="form-label">Fruit Value</label>
+            <input type="text" class="form-control" name="fruitValue" id="fruitValue" value="<%= fruit.value || "" %>">
+        </div>
+        <div class="mb-3">
+            <label for="review" class="form-label">Fruit Review</label>
+            <input type="text" class="form-control" name="review" id="review" value="<%= fruit.review || "" %>">
+        </div>
+        <div class="mb-3">
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</body>
+
+<%- include("include/footer") -%>
